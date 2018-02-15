@@ -4,7 +4,7 @@
 \alias{read.easyLogBatch}
 \title{Import and process data from multiple EasyLog files}
 \usage{
-read.easyLogBatch(filedir, outputdir = ".", imagedir = ".",
+read.easyLogBatch(filedir, outputdir = "output", imagedir = "output/images",
   noimage = TRUE)
 }
 \arguments{
@@ -26,9 +26,9 @@ Import and process data from multiple EasyLog files
 To extract data from multiple EasyLog files and perform summary calculations
 }
 \examples{
-read.easyLogBatch("/example/data", "/example/output", "/example/output/images", noimage=FALSE)
+read.easyLogBatch("example/data", "example/output", "example/output/images", noimage=FALSE)
 
-read.easyLogBatch("/example/data", "/example/output", noimage=TRUE)
+read.easyLogBatch("example/data", "example/output", noimage=TRUE)
 
 }
 \author{

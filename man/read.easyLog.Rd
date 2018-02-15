@@ -25,7 +25,7 @@ To extract data from an EasyLog file and perform summary calculations
 \examples{
 read.easyLog("example/data/example.txt", noimage=TRUE)
 
-read.easyLog("/example/data/example.txt", imagedir="/example/images", noimage=FALSE)
+read.easyLog("example/data/example.txt", imagedir="example/images", noimage=FALSE)
 
 }
 \author{

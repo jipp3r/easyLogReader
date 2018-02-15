@@ -13,9 +13,9 @@
 #' @author Jamie Rylance, \email{jamie.rylance@lstmed.ac.uk}
 #'
 #' @examples
-#' read.easyLogBatch("/example/data", "/example/output", "/example/output/images", noimage=FALSE)
+#' read.easyLogBatch("example/data", "example/output", "example/output/images", noimage=FALSE)
 #'
-#' read.easyLogBatch("/example/data", "/example/output", noimage=TRUE)
+#' read.easyLogBatch("example/data", "example/output", noimage=TRUE)
 #'
 #' @export
 #'
@@ -26,7 +26,7 @@
 #' @import dplyr
 
 
-read.easyLogBatch <- function(filedir, outputdir = ".", imagedir = ".", noimage = TRUE) {
+read.easyLogBatch <- function(filedir, outputdir = "output", imagedir = "output/images", noimage = TRUE) {
 
   if (!noimage) {
     if (is.null(imagedir)) {
