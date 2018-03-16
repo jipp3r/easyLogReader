@@ -3,6 +3,7 @@
 export(read.easyLog)
 export(read.easyLogBatch)
 import(dplyr)
+import(flux)
 import(ggplot2)
 import(grid)
 import(scales)

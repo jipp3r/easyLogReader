@@ -23,6 +23,7 @@
 #' @import scales
 #' @import stringr
 #' @import dplyr
+#' @import flux
 
 
 read.easyLog <- function(filename, imagedir = ".", noimage = TRUE)
@@ -92,7 +93,12 @@ read.easyLog <- function(filename, imagedir = ".", noimage = TRUE)
                             time.recorded = time.recorded,
                             mean.co = mean(raw.data$co),
                             max.co = max(raw.data$co),
-                            over.warning.prop = (sum(raw.data$co>50)/nrow(raw.data)))
+                            over.warning.prop = (sum(raw.data$co>50)/nrow(raw.data)),
+                            sd.co = sd(raw.data$co, na.rm = TRUE),
+                            median.co = median(raw.data$co, na.rm = TRUE),
+                            q5.co = quantile(raw.data$co, c(0.05), na.rm = TRUE),
+                            q95.co = quantile(raw.data$co, c(0.95), na.rm = TRUE),
+                            auc.co = sum(raw.data$co)/time.recorded)
 
 
     return(cbind(filename.df,return.df))
