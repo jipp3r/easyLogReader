@@ -62,13 +62,13 @@ read.easyLog <- function(filename, imagedir = ".", noimage = TRUE)
     # Remove the headers and one-off information
     raw.data <- raw.data[2:nrow(raw.data),1:4]
 
-
     # Name the columns
     names(raw.data)[2] <- 'time'
-    raw.data$time <- strptime(raw.data$time, "%Y-%m-%d %H:%M:%S")
     names(raw.data)[3] <- 'co'
-    raw.data$co <- as.numeric(raw.data$co)
     names(raw.data)[4] <- 'warning'
+
+    raw.data$time <- strptime(raw.data$time, "%Y-%m-%d %H:%M:%S")
+    raw.data$co <- as.numeric(raw.data$co)
     raw.data$warning <- as.numeric(raw.data$warning)
 
     time.start <- raw.data$time[1]
@@ -91,14 +91,14 @@ read.easyLog <- function(filename, imagedir = ".", noimage = TRUE)
                             time.start = time.start,
                             time.end = time.end,
                             time.recorded = time.recorded,
-                            mean.co = mean(raw.data$co),
-                            max.co = max(raw.data$co),
-                            over.warning.prop = (sum(raw.data$co>50)/nrow(raw.data)),
+                            mean.co = mean(raw.data$co, na.rm = TRUE),
+                            max.co = max(raw.data$co, na.rm = TRUE),
+                            over.warning.prop = sum(raw.data$co>50, na.rm = TRUE)/nrow(raw.data),
                             sd.co = sd(raw.data$co, na.rm = TRUE),
                             median.co = median(raw.data$co, na.rm = TRUE),
                             q5.co = quantile(raw.data$co, c(0.05), na.rm = TRUE),
                             q95.co = quantile(raw.data$co, c(0.95), na.rm = TRUE),
-                            auc.co = sum(raw.data$co)/time.recorded)
+                            auc.co = sum(raw.data$co, na.rm = TRUE)/time.recorded)
 
 
     return(cbind(filename.df,return.df))

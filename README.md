@@ -17,6 +17,7 @@ install.packages('ggplot2')
 install.packages('grid')
 install.packages('scales')
 install.packages('stringr')
+install.packages('flux')
 ```
 
 ### Installing
