@@ -5,7 +5,7 @@
 \title{Import and process data from multiple EasyLog files}
 \usage{
 read.easyLogBatch(filedir, outputdir = "output", imagedir = "output/images",
-  noimage = TRUE)
+  noimage = TRUE, leadtime = 0, truncate = NA)
 }
 \arguments{
 \item{filedir}{Character vector. Directory containing EasyLog CSV files to process.}
@@ -15,6 +15,10 @@ read.easyLogBatch(filedir, outputdir = "output", imagedir = "output/images",
 \item{imagedir}{Optional. Character vector. Only used if noimage=FALSE. Directory into which image files will be output (default=current working directory).}
 
 \item{noimage}{Logical. If TRUE, no images are produced (default=TRUE).}
+
+\item{leadtime}{Optional. Double. Hours into recording before which data is ignired (default=no lead-time).}
+
+\item{truncate}{Optional. Double. Hours into recording after which data is ignored (default=no truncation). NB: recording is truncated after any leadtime is employed.}
 }
 \value{
 Dataframe of test results

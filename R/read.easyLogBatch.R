@@ -7,6 +7,8 @@
 #' @param outputdir Optional. Character vector. Directory into which data will be output (default=current working directory).
 #' @param imagedir Optional. Character vector. Only used if noimage=FALSE. Directory into which image files will be output (default=current working directory).
 #' @param noimage Logical. If TRUE, no images are produced (default=TRUE).
+#' @param leadtime Optional. Double. Hours into recording before which data is ignired (default=no lead-time).
+#' @param truncate Optional. Double. Hours into recording after which data is ignored (default=no truncation). NB: recording is truncated after any leadtime is employed.
 #'
 #' @return Dataframe of test results
 #'
@@ -26,7 +28,7 @@
 #' @import dplyr
 
 
-read.easyLogBatch <- function(filedir, outputdir = "output", imagedir = "output/images", noimage = TRUE) {
+read.easyLogBatch <- function(filedir, outputdir = "output", imagedir = "output/images", noimage = TRUE, leadtime = 0, truncate = NA) {
 
   if (!noimage) {
     if (is.null(imagedir)) {
@@ -56,7 +58,7 @@ read.easyLogBatch <- function(filedir, outputdir = "output", imagedir = "output/
   results.df <- as.data.frame(NULL)
 
   for (filename in list.files(filedir, full.names=TRUE)) {
-    analysis.tmp <- read.easyLog(filename, imagedir =imagedir, noimage = noimage)
+    analysis.tmp <- read.easyLog(filename, imagedir =imagedir, noimage = noimage, leadtime = leadtime, truncate = truncate)
 
 
     if (is.null(analysis.tmp)) {

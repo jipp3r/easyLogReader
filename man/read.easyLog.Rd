@@ -4,14 +4,20 @@
 \alias{read.easyLog}
 \title{Import and process data from a single EasyLog file}
 \usage{
-read.easyLog(filename, imagedir = ".", noimage = TRUE)
+read.easyLog(filename, imagedir = ".", noimage = TRUE, truncate = NA,
+  leadtime = 0)
 }
 \arguments{
 \item{filename}{Character vector. Filename of the EasyLog CSV file to process.}
 
 \item{imagedir}{Optional. Character vector. Only used if noimage=FALSE. Directory into which image files will be output (default=current working directory)}
 
-\item{noimage}{Logical. If TRUE, no images are produced (default=TRUE).}
+\item{noimage}{Optional. Logical. If TRUE, no images are produced (default=TRUE).}
+
+\item{truncate}{Optional. Double. Hours into recording after which data is ignored (default=NA i.e. no truncation). NB: recording is truncated after any leadtime is employed.
+NA}
+
+\item{leadtime}{Optional. Double. Hours into recording before which data is ignored (default=0 i.e. no lead-time).}
 }
 \value{
 Dataframe of test results
@@ -26,6 +32,8 @@ To extract data from an EasyLog file and perform summary calculations
 read.easyLog("example/data/example.txt", noimage=TRUE)
 
 read.easyLog("example/data/example.txt", imagedir="example/images", noimage=FALSE)
+
+read.easyLog("example/data/example.txt", imagedir="example/images", leadtime=1, truncate=24)
 
 }
 \author{
