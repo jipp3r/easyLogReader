@@ -115,7 +115,7 @@ read.easyLog <-
       raw.data$warning <- as.numeric(raw.data$warning)
 
       raw.data$hour <-
-        as.numeric(difftime(raw.data$time, raw.data$time[1], units = "hours"))
+        as.numeric(difftime(raw.data$time, raw.data$time[1], units = "hours")) - leadtime
 
       return.df[1, "start"] <- as.character(raw.data$time[1])
       return.df[1, "end"] <-
