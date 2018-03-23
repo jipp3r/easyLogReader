@@ -128,15 +128,17 @@ read.easyLog <-
 
 
 
-      # remove offset data
-      raw.data <- raw.data[raw.data$hour >= 0, ]
 
       # remove truncated data
       if (!is.na(truncate)) {
-        if(raw.data$hour[nrow(raw.data)] < truncate) warning(paste0("Data ends before truncation period for: ", filename))
-        raw.data <- raw.data[raw.data$hour < truncate, ]
+        if (raw.data$hour[nrow(raw.data)] < truncate)
+          warning(paste0("Data ends before truncation period for: ", return.df[1, "filename"]))
+        raw.data <- raw.data[raw.data$hour < truncate,]
 
       }
+
+      # remove offset data
+      raw.data <- raw.data[raw.data$hour >= 0, ]
 
 
       # Only continue with analysis if any data remaining
