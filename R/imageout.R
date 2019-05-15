@@ -22,7 +22,6 @@
 
 
 imageout <- function(df, image.filename) {
-image.filename <- strsplit
 
   # PLOT IMAGES
   # standardise new (derived) theme
